@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,7 +17,6 @@ import {
 import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import ContactForm from '@/components/forms/ContactForm';
-import CampaignList from '@/components/campaigns/CampaignList';
 import StatsCards from '@/components/stats/StatsCards';
 
 const DistributeurDashboard = () => {
