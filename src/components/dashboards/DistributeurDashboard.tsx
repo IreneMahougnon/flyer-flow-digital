@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,11 @@ import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import ContactForm from '@/components/forms/ContactForm';
 import StatsCards from '@/components/stats/StatsCards';
+import ContactsList from '@/components/distributeur/ContactsList';
+import MessagesPanel from '@/components/distributeur/MessagesPanel';
+import PlanningTournees from '@/components/distributeur/PlanningTournees';
+import StatistiquesPanel from '@/components/distributeur/StatistiquesPanel';
+import RapportsPanel from '@/components/distributeur/RapportsPanel';
 
 const DistributeurDashboard = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -147,7 +153,9 @@ const DistributeurDashboard = () => {
               <TabsList>
                 <TabsTrigger value="campaigns">Campagnes Actives</TabsTrigger>
                 <TabsTrigger value="contacts">Mes Contacts</TabsTrigger>
+                <TabsTrigger value="messages">Messages</TabsTrigger>
                 <TabsTrigger value="planning">Planning</TabsTrigger>
+                <TabsTrigger value="statistics">Statistiques</TabsTrigger>
                 <TabsTrigger value="reports">Rapports</TabsTrigger>
               </TabsList>
               
@@ -203,66 +211,23 @@ const DistributeurDashboard = () => {
               </TabsContent>
               
               <TabsContent value="contacts">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Mes Contacts</CardTitle>
-                    <CardDescription>
-                      Liste des personnes à qui vous avez distribué des prospectus
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center py-8">
-                      <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 mb-4">Aucun contact enregistré</p>
-                      <Button onClick={() => setShowContactForm(true)}>
-                        <Plus className="h-4 w-4 mr-2" />
-                        Ajouter un contact
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                <ContactsList onAddContact={() => setShowContactForm(true)} />
+              </TabsContent>
+              
+              <TabsContent value="messages">
+                <MessagesPanel />
               </TabsContent>
               
               <TabsContent value="planning">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Planning des Tournées</CardTitle>
-                    <CardDescription>
-                      Organisez vos prochaines distributions
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center py-8">
-                      <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 mb-4">Aucune tournée planifiée</p>
-                      <Button>
-                        <Plus className="h-4 w-4 mr-2" />
-                        Planifier une tournée
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                <PlanningTournees />
+              </TabsContent>
+              
+              <TabsContent value="statistics">
+                <StatistiquesPanel />
               </TabsContent>
               
               <TabsContent value="reports">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Rapports d'Activité</CardTitle>
-                    <CardDescription>
-                      Vos statistiques et performances
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-center py-8">
-                      <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-500 mb-4">Aucun rapport disponible</p>
-                      <Button>
-                        <Plus className="h-4 w-4 mr-2" />
-                        Générer un rapport
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                <RapportsPanel />
               </TabsContent>
             </Tabs>
           </div>
